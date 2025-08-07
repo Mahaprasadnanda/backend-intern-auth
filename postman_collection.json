@@ -1,0 +1,70 @@
+{
+  "info": {
+    "_postman_id": "lawvriksh-fastapi-demo",
+    "name": "LawVriksh FastAPI Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login with Google",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Posts (Unauthorized)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": [
+        {
+          "code": 403,
+          "body": "{\"detail\":\"Not authenticated\"}"
+        }
+      ]
+    },
+    {
+      "name": "Get Posts (Authorized)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <access_token>",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/posts",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "posts"]
+        }
+      },
+      "response": [
+        {
+          "code": 200,
+          "body": "[{\"post_id\":1,\"title\":\"First Post\",\"contentSnippet\":\"Hello World!\"},{\"post_id\":2,\"title\":\"Second Post\",\"contentSnippet\":\"FastAPI is awesome!\"}]"
+        }
+      ]
+    }
+  ]
+}

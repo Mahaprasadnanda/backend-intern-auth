@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+authlib
+pyjwt
+flake8
